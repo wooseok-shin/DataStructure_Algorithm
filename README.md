@@ -3,6 +3,8 @@
 
 #### 자료구조
 
+
+
 1. 배열(Array)
 
 * 같은 종류의 데이터를 효율적으로 관리하기 위해 사용  
@@ -14,8 +16,10 @@
 
 
 #### C와 파이썬 배열 Example  
-1) C  
-'''c
+(1) C
+
+
+```c
 #include <stdio.h>
 
 int main(int argc, char * argv[])
@@ -25,14 +29,15 @@ int main(int argc, char * argv[])
     printf ("%s\n", country);    
     return 0;
 }
-'''
+```
 
-2) Python
-'''python
+(2) Python
+```python
 country = "Korea"
 print(country[0], country[1], country[2], country[3], country[4], country[5])
 print(country)
-'''
+```
+
 
 
 2. 큐 (Queue)
@@ -48,7 +53,7 @@ print(country)
 * 주로 멀티 태스킹을 위한 프로세스 스케쥴링 방식을 구현하기 위해 많이 사용됨 (운영체제쪽)
 
 * 파이썬 Queue 라이브러리
-'''python
+```python
 import queue
 Fifo_queue = queue.Queue()
 Fifo_queue.put('Enqueue')  #데이터 입력
@@ -57,20 +62,20 @@ Fifo_queue.put(1)
 Fifo_queue.get()   #데이터 출력, 출력물 = "Enqueue"
 Fifo_queue.qsize()
 
-'''
+```
 
 * Lifo(Last-In, First-Out) Queue
 	- 마지막에 넣은 것이 먼저 나오는 방식
 	- 경우에 따라서 Lifo가 사용될 때가 있음
-'''python
+
+```python
 Lifo_queue = queue.LifoQueue()
-'''
+```
 	
 * Priority Queue
-	-우선순위에 따라서 
+	-우선순위에 따라서 출력된다
 	
-	
-'''python
+```python
 priority_queue = queue.PriorityQueue()
 priority_queue.put((10, "Important"))
 priority_queue.put((5, "Very important"))
@@ -78,7 +83,7 @@ priority_queue.put((15, "so so"))
 
 priority_queue.get() # --> 우선순위가 가장 높은 (5, 'Very important') 출력  
 # (우선순위, data) --> Tuple형태로 입력
-'''
+```
 
 
 3. 스택 (Stack)
@@ -94,7 +99,7 @@ priority_queue.get() # --> 우선순위가 가장 높은 (5, 'Very important') �
 
 ![stack](https://user-images.githubusercontent.com/46666862/71476609-366b6700-2829-11ea-9729-80d4cabb3396.png)
 
-'''python
+```python
 # 재귀 함수
 def recursive(data):
     if data < 0:
@@ -105,8 +110,8 @@ def recursive(data):
         print("returned", data)
 		
 reculsive(4)
-'''
-'''
+```
+```
 결과
 4
 3
@@ -119,7 +124,7 @@ returned 1
 returned 2
 returned 3
 returned 4
-'''
+```
 
 * 위처럼 함수의 동작방식이 스택과 유사하다. 프로세스 함수 동작방식에서 많이쓰인다
 
