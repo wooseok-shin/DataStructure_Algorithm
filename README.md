@@ -1,11 +1,11 @@
-## 자료구조 및 알고리즘 정리
+# 자료구조 및 알고리즘 정리
 
 
-#### 자료구조
+## 자료구조  
 
 
 
-1. 배열(Array)
+### 1. 배열(Array)  
 
 * 같은 종류의 데이터를 효율적으로 관리하기 위해 사용  
 * 같은 종류의 데이터를 순차적으로 저장
@@ -37,10 +37,10 @@ country = "Korea"
 print(country[0], country[1], country[2], country[3], country[4], country[5])
 print(country)
 ```
+  
+  
 
-
-
-2. 큐 (Queue)
+### 2. 큐 (Queue)  
 
 * 가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 구조  
 	- 줄을 서는 행위와 유사함  
@@ -84,10 +84,10 @@ priority_queue.put((15, "so so"))
 priority_queue.get() # --> 우선순위가 가장 높은 (5, 'Very important') 출력  
 # (우선순위, data) --> Tuple형태로 입력
 ```
-
-
-3. 스택 (Stack)
-
+  
+  
+### 3. 스택 (Stack)  
+  
 * LIFO(Last In, Fisrt Out) 또는 FILO(First In, Last Out) 데이터 관리 방식을 따르는 구조
 	- Queue의 정책(FIFO)와 반대 개념으로 볼 수 있다
 	
@@ -136,3 +136,79 @@ returned 4
 	- 데이터 최대 개수를 미리 정해야 한다
 		- 파이썬에서 재귀 함수는 1000번까지만 호출 가능
 	- 따라서, 저장 공간의 낭비가 발생할 수 있다
+	
+	
+	
+	
+### 4. 링크드 리스트 (=연결 리스트)  
+
+* 배열은 순차적으로 연결된 공간에 데이터를 나열하는 데이터 구조  
+* 링크드 리스트는 떨어진 곳에 존재하는 데이터를 화살표로 연결해서 관리하는 구조  
+* 배열은 미리 특정한 공간(사이즈)을 예약해야하지만 링크드리스트는 추가할 수 있음. 배열의 단점 극복  
+* <font color='#BF360C'>본래 C언어에서는 주요한 데이터 구조이지만, 파이썬은 리스트 타입이 링크드 리스트의 기능을 모두 지원</font>  
+
+
+* 데이터값과 포인터(주소)로 구성되어있음 --> 이를 노드라고 부른다.  
+* 포인터 : 각 노드 안에서, 다음이나 이전 노드와의 연결 정보를 가지고 있는 공간
+
+* 일반적인 링크드 리스트 형태  
+![노드,포인터](https://user-images.githubusercontent.com/46666862/71557091-927df780-2a84-11ea-9a8e-9eb5d57eacd0.PNG)
+
+
+
+* 간단한 링크드 리스트 예시  
+	
+	- Node 구현  
+```python
+class Node:
+	def __init__(self, data, next=None):
+		self.data = data
+		self.next = next
+
+```
+
+	- Node와 Node 연결하기(포인터 활용)
+	
+```python
+node1 = Node(1)
+node2 = Node(2)
+node1.next = node2
+head = node1   # 가장 앞에있는 주소를 저장해놓기
+```
+  
+	- 데이터 추가하기
+	  
+```python
+def add(data):
+	node = head
+	while node.next:
+		node = node.next
+	node.next = (data)
+	
+node1 = Node(1)
+head = node1
+for index in range(2,10):
+	add(index)
+```
+  
+	- 링크드 리스트 데이터 출력하기
+	
+```python
+node = head
+while node.next:
+	print(node.data)
+	node = node.next
+print(node.data)
+```
+
+
+** 링크드 리스트의 장단점(C언어에서의)**
+
+* 장점
+  - 미리 데이터 공간을 미리 할당하지 않아도 됨
+    - 배열은 **미리 데이터 공간을 할당** 해야 함
+* 단점
+  - 연결을 위한 별도 데이터 공간이 필요하므로, 저장공간 효율이 높지 않음
+  - 연결 정보를 찾는 시간이 필요하므로 접근 속도가 느림
+  - 중간 데이터 삭제시, 앞뒤 데이터의 연결을 재구성해야 하는 부가적인 작업 필요
+  
