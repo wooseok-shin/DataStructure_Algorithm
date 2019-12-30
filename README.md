@@ -211,4 +211,94 @@ print(node.data)
   - 연결을 위한 별도 데이터 공간이 필요하므로, 저장공간 효율이 높지 않음
   - 연결 정보를 찾는 시간이 필요하므로 접근 속도가 느림
   - 중간 데이터 삭제시, 앞뒤 데이터의 연결을 재구성해야 하는 부가적인 작업 필요
+
+
+
+
+** Double Linked list (이중 연결 리스트) **  
+
+- 장점 : 양방향으로 연결되어 있어 노드 탐색이 양쪽으로 모두 가능(뒤에서부터도 탐색 가능)
+![이중연결리스트](https://user-images.githubusercontent.com/46666862/71594663-2b436e80-2b7c-11ea-89a0-4a210bf15e29.PNG)
+
+
+더블 링크드 리스트 - 특정 노드 앞과 뒤에 데이터 추가  
   
+```python
+class Node:
+    def __init__(self, data, prev=None, next=None):
+        self.prev = prev
+        self.data = data
+        self.next = next
+
+class NodeMgmt:
+    def __init__(self, data):
+        self.head = Node(data)
+        self.tail = self.head
+    
+    def insert_before(self, data, before_data):
+        if self.head == None:
+            self.head = Node(data)
+            return True            
+        else:
+            node = self.tail
+            while node.data != before_data:
+                node = node.prev
+                if node == None:
+                    return False
+            new = Node(data)
+            before_new = node.prev
+            before_new.next = new
+            new.next = node
+            return True
+
+    def insert_after(self, data, after_data):
+        if self.head == None:
+            self.head = Node(data)
+            return True            
+        else:
+            node = self.head
+            while node.data != after_data:
+                node = node.next
+                if node == None:
+                    return False
+            new = Node(data)
+            after_new = node.next
+            new.next = after_new
+            new.prev = node
+            node.next = new
+            if new.next == None:
+                self.tail = new
+            return True
+
+    def insert(self, data):
+        if self.head == None:
+            self.head = Node(data)
+        else:
+            node = self.head
+            while node.next:
+                node = node.next
+            new = Node(data)
+            node.next = new
+            new.prev = node
+            self.tail = new
+
+    def desc(self):
+        node = self.head
+        while node:
+            print (node.data)
+            node = node.next
+
+
+# 테스트
+
+node_mgmt = NodeMgmt(0)
+for data in range(1, 10):
+    node_mgmt.insert(data)
+
+node_mgmt.desc()
+
+node_mgmt.insert_after(1.5, 1)
+node_mgmt.desc()
+
+
+```
