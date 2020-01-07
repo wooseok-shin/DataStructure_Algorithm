@@ -346,10 +346,10 @@ node_mgmt.desc()
 
 * O(입력)
   - 입력 n 에 따라 결정되는 시간 복잡도 함수
-  - O(1), O(log n), O(n), O(nlog n), O(n<sup>2), O(2<sup>n), O(n!)등으로 표기한다
+  - O(1), O(log n), O(n), O(nlog n), O(n^2), O(2^n), O(n!)등으로 표기한다
   - 입력 n 의 크기에 따라 기하급수적으로 시간 복잡도가 늘어날 수 있다
-    - O(1) < O(log n) < O(n) < O(nlog n) < O(n<sup>2) < O(2<sup>n) < O(n!)
-      - 참고: log n 의 베이스는 2이다. - log<sub>2 n
+    - O(1) < O(log n) < O(n) < O(nlog n) < O(n^2) < O(2^n) < O(n!)
+      - cf)log n 의 밑은 2 - log_2 n
   
 
 * 단순하게 입력 n에 따라, 몇번 실행이 되는지를 계산하면 된다.
@@ -367,7 +367,7 @@ node_mgmt.desc()
                 for index in range(n):
                      print(index)
        ```
-    - n에 따라, n<sup>2번, n<sup>2 + 1000 번, 100n<sup>2 - 100, 또는 300n<sup>2 + 1번등 실행한다: O(n<sup>2)
+    - n에 따라, n^2번, n^2 + 1000 번, 100n^2 - 100, 또는 300n^2 + 1번등 실행한다: O(n^2)
        ```python
             variable = 1
             for i in range(300):
